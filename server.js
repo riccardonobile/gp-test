@@ -1,6 +1,7 @@
 'use strict';
 
 let cors = require('cors'),
+    morgan = require('morgan'),
     express = require('express'),
     bodyParser = require('body-parser');
 
@@ -15,7 +16,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 app.use(cors(corsConfig));
-
+app.use(morgan('combined'));
 app.set('trust proxy', true);
 
 let mysql = require('./app/services/service.mysql');
