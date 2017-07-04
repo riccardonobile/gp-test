@@ -6,6 +6,14 @@ let mysql = require('../services/service.mysql'),
 
 let db = mysql.getConnection();
 
+let getAll = function(callback) {
+    let query = fs.readFileSync('app/models/queries/measurements/query.getAll.sql').toString();
+
+    db.query(query, function (err, rows) {
+        callback(err, rows);
+    });
+};
+
 let insert = function (stationId, measurements, callback) {
     let query = fs.readFileSync('app/models/queries/measurements/query.insert.sql').toString();
 
@@ -23,5 +31,6 @@ let insert = function (stationId, measurements, callback) {
 };
 
 module.exports = {
+    getAll,
     insert
 };

@@ -6,6 +6,21 @@ const checkApi = 'https://pw2017b.mvlabs.it/check';
 
 let measurementsModel = require('../models/model.measurements');
 
+let getAll = function(req, res) {
+    measurementsModel.getAll(function(err, data) {
+        if (err) {
+            res.status(500).json({
+                status: 'SQL Error'
+            })
+        } else {
+            res.status(200).json({
+                status: 'OK',
+                data: data
+            })
+        }
+    });
+};
+
 let insert = function(req, res) {
     let stationId = req.params.stationId;
 
@@ -55,5 +70,6 @@ let insert = function(req, res) {
 };
 
 module.exports = {
+    getAll,
     insert
 };
