@@ -3,7 +3,8 @@
 let cors = require('cors'),
     morgan = require('morgan'),
     express = require('express'),
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser'),
+    expressValidator = require('express-validator');
 
 let dbConfig = require('./app/configs/config.db'),
     corsConfig = require('./app/configs/config.cors'),
@@ -11,6 +12,7 @@ let dbConfig = require('./app/configs/config.db'),
 
 let app = express();
 
+app.use(expressValidator());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
