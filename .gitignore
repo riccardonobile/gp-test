@@ -60,3 +60,7 @@ typings/
 # Ignore files build by WebStorm
 .idea/
 
+# Config files
+app/configs/config.db.js
+app/configs/config.cors.js
+app/configs/config.express.js
